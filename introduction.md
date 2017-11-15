@@ -22,7 +22,7 @@
 
 ## TCP/IP layering
   TCP and UDP are the predominant transport layer protocols. Both use IP as the network layer.    
-  IP is the main protocol at the network layer. It is used by both TCP and UDP. Every piece of TCP and UDP data that get transfered around an internet goes through the IP layer at both system and at every intermediate router.  
+  IP is the main protocol at the network layer. It is used by both TCP and UDP. Every piece of TCP and UDP data that get transfered around an internet goes through the IP layer at both system and at every intermediate router.
   
   ICMP is an ajunct to IP. It is used by the IP layer to exchange error messages and other vitalinformation with IP layer in another host ot router. Ping and   Traceroute both use ICMP. 
   
