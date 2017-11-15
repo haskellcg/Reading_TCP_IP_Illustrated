@@ -76,3 +76,14 @@ It is a simple form of encapsulation for IP datagrams on serial lines, and is sp
   IEEE 802.3/802.2|1492
   X.25|576
   Point-to-Point (low delay)|296
+  
+## Path MTU
+  When two host on the same network are communicating with each other, it is the MTU of the network that is important.
+  
+  But when two host are communicating across multiple network, each link can have a different MTU. The smallest MTU of any data link that packets traverse between the two hosts is important, which is called **path MTU**.
+  
+  The path MTU between any two hosts need not to be contant. It depends on the route being used at any time.
+  
+  The path MTU need not to be the same in the two directions.
+  
+## Serial Line Thrroughput Calculations
