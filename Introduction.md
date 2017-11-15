@@ -34,4 +34,42 @@
 ## Internet Addresses
   Every interface on an internet must have a unique Internet address (also called an IP address).
   
-  Classes
+  Classes|Bit|Range
+  -------|---|-----
+  A|0xxx.xxxx.xxxx.xxxx|0.0.0.0 ~ 127.255.255.255
+  B|10xx.xxxx.xxxx.xxxx|128.0.0.0 ~ 191.255.255.255
+  C|110x.xxxx.xxxx.xxxx|192.0.0.0 ~ 223.255.255.255
+  D|1110.xxxx.xxxx.xxxx|224.0.0.0 ~ 239.255.255.255
+  E|1111.xxxx.xxxx.xxxx|240.0.0.0 ~ 255.255.255.255
+  
+  The authority is the Internet Netwok Information Center, called the InterNIC.
+  
+  There are three types of IP address:
+  * unicast (destined for a single host)
+  * broadcast (destined for all hosts on a given network)
+  * multicast (destined for a set of hosts that belong to a multicast group)
+
+## The Domain Name System
+  DNS is a distributed database that provides a mapping between IP and address and hostnames.
+  
+## Encapsulation
+  Each layer adds information to the data by prepending headers (and sometimes adding trailer information) to the data that it receives:
+  * The unit of data that TCP sends to IP is called a TCP **segment**
+  * The unit of data that IP sends to the network interface is called a IP **datagram** (**packet**)
+  * The stream of bits that flows across the Ethernet is called a **frame**
+  
+  A physical property of an Ethernet frame is that the size of its data must be **between 46 and 1500 bytes**.
+  
+  TCP, UDP, ICMP, IGMP all send data to IP. IP handles this by storing an 8-bit value in its header called **the protocol field**. A value of 1 is for ICMP, 2 is for IGMP, 6 indicates TCP, and 17 is for UDP.
+  
+  Both TCP and UDP use **16-bit port numbers** to identify applications. TCP and UDP store the source port number and destination port number in their respective headers.
+  
+  The network interface sends and receives frames on behalf of IP, ARP and RARP. There musst be some form of identification in the Ethernet header indicating which network layer protocol generated data. To handle this there is a 16-bit frame type field in the Ethernet header.
+  
+## Demultiplexing
+  When an Ethernet frame is receive an the destination host, it starts its way up the protocol stack and all the headers are removed by the approperiate protocol box. This is called demultiplexing.
+  
+  Each protocol box looks at centain identifiers in its header to determine which box in the next upper layer receives the data.
+  
+## Client-Server Model
+  
