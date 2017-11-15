@@ -19,7 +19,8 @@
   **RFC 893** describes another form of encapsulation used on Ethernet, called **trailer encapsulation**.
   
 ## SLIP: Serial Line IP
-  It is a simple form of encapsulation for IP datagrams on serial lines, and is specified in **RFC 1055**. SLIP has become popular for connecting home systemsto the Internet, through the ubiquitous RS-232 serial port found on almost every computer and high-speed modems.
+
+It is a simple form of encapsulation for IP datagrams on serial lines, and is specified in **RFC 1055**. SLIP has become popular for connecting home systemsto the Internet, through the ubiquitous RS-232 serial port found on almost every computer and high-speed modems.
   
   The following rules specify the framing used by SLIP:
   * The IP datagram is terminated by the special character called END (0xc0). Also to prevent any line noise before this datagram from being interpreted as part of this datagram, most implementations transit an END character at the beginning of the datagram too.
@@ -61,3 +62,17 @@
   IP datagram sent to the one of the host's own IP address normally do not appear on the corresponding network.
   
 ## MTU
+  there is limit on the size of the frame for both Enthernet encapsulation and 802.3 encapsulation. This limits the number of bytes of data to 1500 and 1492, respectively. This characteristic of the link layer is called the MTU, its maximum transmission unit.
+  
+  If IP has a datagram to send, and the datagram is larger than the link layer's MTU, IP performs **fragmentation**, breaking the datagram up into smaller pieces (fragments), so that each fragment is smaller than the MTU.
+  
+  Network|MTU(bytes)
+  -------|----------
+  Hyperchannel|65535
+  16 Mbits/sec token ring (IBM)|17914
+  4 Mbits/sec token ring (IEEE 802.5)|4464
+  FDDI|4352
+  Ethernet|1500
+  IEEE 802.3/802.2|1492
+  X.25|576
+  Point-to-Point (low delay)|296
