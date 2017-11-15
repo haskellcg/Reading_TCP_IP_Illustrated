@@ -24,4 +24,30 @@
   The following rules specify the framing used by SLIP:
   * The IP datagram is terminated by the special character called END (0xc0). Also to prevent any line noise before this datagram from being interpreted as part of this datagram, most implementations transit an END character at the beginning of the datagram too.
   * If a byte of the IP datagram equals the END character, the 2-byte sequence **0xdb, 0xdc** is transmitted instead. This special character, 0xdb, is called the SLIP ESC character, but its value is different from ASCII ESC character (0x1b).
+  * If a byte of the IP datagram equals the SLIP ESC character, the 2-byte sequence **0xdb, 0xdd** is transmitted.
+
+## Compressed SLIP
+  Since SLIP lines are often slow (19200 bits/sec or below) and frequently used for interactive traffic.
+  
+  CSLIP (Compressed SLIP) is specified in RFC 1144. CSLIP normally reduces the 40 byte header to 3 or 5 bytes. It maintains the state of up to 16 TCP connections on each end of the CSLIP link and knows that some of the field in the two headers for a given connection normally dont change.
+  
+# PPP: Point-to-Point Protocol
+  PPP, the Point-to-Point Protocol, corrects all the deficiencies in SLIP.
+  
+  PPP consist of three components:
+  * A way to encapsulate IP datagrams on a serial link. PPP supports either an asynchronous link with 8 bits of data and no parity (i.e., the ubiquitous serial interface found on most computers) or bit-oriented synchronous links.
+  * A link control protocol (LCP) to establish, configure, and test the data-link connection. This allows each end to negotiate various options.
+  * A family of network control protocols (NCPs) specific to different network layer protocols. RFCs currently exist for IP, the OSI network layer, DECnet, and AppleTalk.
+  
+  Since PPP, like SLIP, is often used across slow serial links, reducing the number of bytes per frame reduces the latency for interactive application. Using the link control protocol, most implementation negotiate to omit the constant address and control and to reduce the size of the protocol field from 2 bytes to 1 byte.
+  
+  In summary, PPP provides the following advantages over SLIP:
+  * suport for multiple protocols on a single serial line, not just IP datagrams
+  * a cyclic redundancy check on every frame
+  * dynamic negotiate of the IP address for each end (using IP network control protocol)
+  * TCP and IP headers compression similar to CSLIP
+  * a link control protocol for negotiate data-link options
+  
+## Lookback Interface
+  
   * 
