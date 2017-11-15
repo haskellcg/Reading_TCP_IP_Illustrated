@@ -31,7 +31,7 @@
   
   CSLIP (Compressed SLIP) is specified in RFC 1144. CSLIP normally reduces the 40 byte header to 3 or 5 bytes. It maintains the state of up to 16 TCP connections on each end of the CSLIP link and knows that some of the field in the two headers for a given connection normally dont change.
   
-# PPP: Point-to-Point Protocol
+## PPP: Point-to-Point Protocol
   PPP, the Point-to-Point Protocol, corrects all the deficiencies in SLIP.
   
   PPP consist of three components:
@@ -48,6 +48,16 @@
   * TCP and IP headers compression similar to CSLIP
   * a link control protocol for negotiate data-link options
   
-## Lookback Interface
+## Loopback Interface  
+  Most implementation supports a loopback interface that allow a client and server on the same host to communicate with each other using TCP/IP. The **class A network ID 127** is reserved for the loopback interface.
   
-  * 
+  The key points to note in this figure are as follows:
+  * Everything send to the loopback address (nromally 127.0.0.1) appears as IP input.
+  * Datagrams sent to a broadcast address or a multicast are copied to the loopback interface and sent out on the Ethernet. This is because the definition of broadcasting and multicasting includes the sending host
+  * Anything sent to one of the host's own IP address is sent to loopback interface.
+  
+  While it may seem inefficient to perform all the transport layer and IP layer processing of the loopback data, it simplifies the design because the loopback interface appears as just another link layer to the network layer. The network layer passes a datagram to the loopback interface like any other link layer.
+  
+  IP datagram sent to the one of the host's own IP address normally do not appear on the corresponding network.
+  
+## MTU
