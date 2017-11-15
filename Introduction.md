@@ -93,3 +93,15 @@
   Client port numbers are called ephemeral ports (i.e. short live).
   
   Most TCP/IP implementations allocate ephemeral port number between 1024 to 5000, the port number above 5000 are intended for other servers.
+
+## Standardization Process
+
+## RFCs
+  All the official standards in the internet community are pushlished as Request for Comment, or RFC.
+  
+## Standard, Simple Services
+  There are a few standard, simple services that almost every implementation provides.
+  
+  echo/discard/daytime/chargen/time
+  
+  
