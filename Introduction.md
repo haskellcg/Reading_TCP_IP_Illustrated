@@ -19,7 +19,7 @@
   A router, by definition, has two or more network interface layer. Any system with multiple interface is called **multihomed**. Most TCP/IP implementations allow a multihomed host to act as a router also, but the host need to be specially configured for this to happen.
   
   Another way to connect networks is with **bridge**. These connect network at the link layer, while routers connect networks at the network layer. Bridges makes multiple LANs appears to the upper layers as a single LAN.
-W  
+
 ## TCP/IP layering
   TCP and UDP are the predominant transport layer protocols. Both use IP as the network layer.  
   
@@ -86,3 +86,10 @@ W
   1. go back to step 1
   
   As a general rule, TCP servers are concurrent, and UDP servers are iterative.
+
+## Port Numbers
+  The well-known ports are managed by the Internet Assigned Numbers Authority (IANA). The well-known port numbers are contained in the file /etc/services.
+  
+  Client port numbers are called ephemeral ports (i.e. short live).
+  
+  Most TCP/IP implementations allocate ephemeral port number between 1024 to 5000, the port number above 5000 are intended for other servers.
