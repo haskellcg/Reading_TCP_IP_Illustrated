@@ -19,7 +19,7 @@
   A router, by definition, has two or more network interface layer. Any system with multiple interface is called **multihomed**. Most TCP/IP implementations allow a multihomed host to act as a router also, but the host need to be specially configured for this to happen.
   
   Another way to connect networks is with **bridge**. These connect network at the link layer, while routers connect networks at the network layer. Bridges makes multiple LANs appears to the upper layers as a single LAN.
-  
+W  
 ## TCP/IP layering
   TCP and UDP are the predominant transport layer protocols. Both use IP as the network layer.  
   
@@ -72,4 +72,17 @@
   Each protocol box looks at centain identifiers in its header to determine which box in the next upper layer receives the data.
   
 ## Client-Server Model
+  We Can categories servers into two classes: iterative and concurrent.
   
+  An iterative server iterates through following steps:
+  1. wait for client request to arrive
+  1. process the client request
+  1. send the response back to the client that sent the request
+  1. go back to step 1
+  
+  A concurrent server, on the other hand, performs the following steps:
+  1. wait for a client request to arrive
+  1. start a new server to handle this client's request. This may involve creating a new process, task, or thread, depending on what the underlying operating system supports. How this step is performed depends on the operating system. 
+  1. go back to step 1
+  
+  As a general rule, TCP servers are concurrent, and UDP servers are iterative.
