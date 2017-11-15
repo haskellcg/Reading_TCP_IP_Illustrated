@@ -15,4 +15,13 @@
   * Should be able to receive RFC 1042 (IEEE 802) packets intermix with RFC 894 packets.
   * May be able to send packets using RFC 1042 encapsulation. If the host can send both types of packets, the type of packets send must be configurable and the configuration option must default to RFC 894 packets.
   
+## Trailer Encapculation
+  **RFC 893** describes another form of encapsulation used on Ethernet, called **trailer encapsulation**.
   
+## SLIP: Serial Line IP
+  It is a simple form of encapsulation for IP datagrams on serial lines, and is specified in **RFC 1055**. SLIP has become popular for connecting home systemsto the Internet, through the ubiquitous RS-232 serial port found on almost every computer and high-speed modems.
+  
+  The following rules specify the framing used by SLIP:
+  * The IP datagram is terminated by the special character called END (0xc0). Also to prevent any line noise before this datagram from being interpreted as part of this datagram, most implementations transit an END character at the beginning of the datagram too.
+  * If a byte of the IP datagram equals the END character, the 2-byte sequence **0xdb, 0xdc** is transmitted instead. This special character, 0xdb, is called the SLIP ESC character, but its value is different from ASCII ESC character (0x1b).
+  * 
