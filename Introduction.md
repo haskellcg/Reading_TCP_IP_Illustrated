@@ -21,8 +21,7 @@
   Another way to connect networks is with **bridge**. These connect network at the link layer, while routers connect networks at the network layer. Bridges makes multiple LANs appears to the upper layers as a single LAN.
 
 ## TCP/IP layering
-  TCP and UDP are the predominant transport layer protocols. Both use IP as the network layer.  
-  
+  TCP and UDP are the predominant transport layer protocols. Both use IP as the network layer.    
   IP is the main protocol at the network layer. It is used by both TCP and UDP. Every piece of TCP and UDP data that get transfered around an internet goes through the IP layer at both system and at every intermediate router.  
   
   ICMP is an ajunct to IP. It is used by the IP layer to exchange error messages and other vitalinformation with IP layer in another host ot router. Ping and   Traceroute both use ICMP. 
@@ -102,6 +101,19 @@
 ## Standard, Simple Services
   There are a few standard, simple services that almost every implementation provides.
   
-  echo/discard/daytime/chargen/time
+  **echo/discard/daytime/chargen/time**
   
+## The Internet
+  The lowercase internet means multiple network connected together, using a common protocol suit.  
+  The uppercast Internet refers to the collection of hosts (over one million) around the world that can communicate with each other using TCP/IP.  
+  While the Internet is an internet, reverse is not true.
   
+## Implementations
+  The de facto standard for TCP/IP implementations is the one from the Computer Systems Research Group at the University of California at Berkeley. 
+  
+## Application Programming Interfaces
+  **sockets**  
+  **TLI (Transport Layer Interface)**
+  
+## Test Network
+
