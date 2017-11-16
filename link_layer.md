@@ -87,3 +87,12 @@ It is a simple form of encapsulation for IP datagrams on serial lines, and is sp
   The path MTU need not to be the same in the two directions.
   
 ## Serial Line Thrroughput Calculations
+  Most SLIP implementation do provides this type-of-service queueing, placing interactive traffic ahead of bulk data traffic. The interactive traffic is normally Telnet, Rlogin and the control portion of FTP.
+  
+  Human factors studies have found that an interactive response time longer than 100-200 ms is perceived as bad. This is round-trip time for an interactive packet to be sent and sometime to be returned.
+  
+  Reducing the MTU of the SLIP link to 256 means the maximum amount of time can be busy with single frame is 266 ms, and half of this is 133 ms. This is better, but still not perfect. The reason we choose this value is to provide good utilization of the line of bulk data transfer.
+  
+  Since the MTU is a value that IP queries the link layer for, the value must include the normal TCP and IP headers. This i how IP makes its fragmentation decision. IP knows nothing about the header compression that CSLIP performs.
+  
+  Out average wait calculation (one-half the time required to transfer a maximum sized frame) only applies when a SLIP link is used for both interactive traffic and bulk data transfer. When only interactive traffic is being exchanged, 1 bytes of data in each direction (assuming 5-byte compressed headers) take around 12.5 ms for the round trip at 9600 bits/sec. This is well within the 100-200 ms range mentioned earlier. Also notice that compressing the headers from 40 bytes to 5 bytes reduces the round-trip time for the 1 byte of data from 85 to 12.5 ms.
