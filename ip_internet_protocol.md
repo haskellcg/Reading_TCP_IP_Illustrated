@@ -49,4 +49,8 @@
   * loose source routing (specifying a list of IP addresses that must be travered by the datagram)
   * strict source routing (similar to loose source routing but here only the addresses in the list can be traversed)  
   These options are rarely used and not all host and routers support all the options.  
-  **The options field always ends on a 32-bit boundary. Pad bytes with a value of 0 are added if necessary. This assure that IP header is always a multiple of 32 bit (as required for the _header length_ field)**
+  
+**The options field always ends on a 32-bit boundary. Pad bytes with a value of 0 are added if necessary. This assure that IP header is always a multiple of 32 bit (as required for the _header length_ field)**
+
+## IP Routing
+  IP routing is simple, especially for a host. If the destination is **directly connected to the host or on the shared network**, then the IP datagram is sent directly to the destinition.
